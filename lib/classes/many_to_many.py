@@ -70,9 +70,9 @@ class Author:
         if magazines:
             return list(set(magazine.category for magazine in magazines))
         else:
-            return None  # Return None when there are no topic areas
+            return None 
+         
 
-    # Disable setting the name property to enforce immutability
     @name.setter
     def name(self, new_name):
         raise AttributeError("Name attribute cannot be modified.")
@@ -80,7 +80,6 @@ class Author:
 
 class Magazine:
     def __init__(self, name, category):
-        # Validate the initial name and category
         if not isinstance(name, str) or not (2 <= len(name) <= 16):
             raise ValueError("Name must be a string between 2 and 16 characters long.")
         if not isinstance(category, str) or len(category) == 0:
@@ -95,7 +94,6 @@ class Magazine:
 
     @name.setter
     def name(self, new_name):
-        # Validate the new name
         if not isinstance(new_name, str) or not (2 <= len(new_name) <= 16):
             raise ValueError("Name must be a string between 2 and 16 characters long.")
         self._name = new_name
@@ -106,7 +104,6 @@ class Magazine:
 
     @category.setter
     def category(self, new_category):
-        # Validate the new category
         if not isinstance(new_category, str) or len(new_category) == 0:
             raise ValueError("Category must be a non-empty string.")
         self._category = new_category
@@ -122,7 +119,7 @@ class Magazine:
     @property
     def article_titles(self):
         if not self._articles:
-            return None  # Return None when there are no articles
+            return None  
         return [article.title for article in self._articles]
 
     @property
@@ -134,7 +131,7 @@ class Magazine:
         if contributing_authors:
             return contributing_authors
         else:
-            return None  # Return None when there are no contributing authors
+            return None  
 
     @classmethod
     def top_publisher(cls, magazines):
